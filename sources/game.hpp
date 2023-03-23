@@ -11,12 +11,12 @@ public:
     // Constructor.
     Game(Player p1, Player p2) {}
     // Methods.
-    void playTurn();
-    void printLastTurn();
-    void playAll();
-    void printWiner();
-    void printLog();
-    void printStats();
+    void playTurn() {}
+    void printLastTurn() {}
+    void playAll(){}
+    void printWiner(){}
+    void printLog() {}
+    void printStats() {}
 };
 
 #endif

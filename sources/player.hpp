@@ -13,8 +13,8 @@ namespace ariel {
         Player() {}
         Player(std::string name) {}
         // Methods.
-        int stacksize() { return 1; }
-        int cardesTaken() { return 1; }
+        int stacksize() { return 27; }
+        int cardesTaken() { return 27; }
     };
 };
 
