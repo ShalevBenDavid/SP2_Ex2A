@@ -4,18 +4,26 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+const int NUM_OF_CARDS = 26;
+
 namespace ariel {
     // Private attributes.
     class Player {
         std::string name;
     public:
         // Constructors.
-        Player() {}
-        Player(std::string name) {}
+        Player() { name = ""; }
+        Player(std::string player_name) { name = player_name; }
+        // Destructor.
+        ~Player() {}
+        // Get method.
+        std::string getName() { return name; }
+        // Set method.
+        void setName(std::string new_name) { name = new_name; }
         // Methods.
-        int stacksize() { return 27; }
-        int cardesTaken() { return 27; }
+        int static stacksize() { return NUM_OF_CARDS; }
+        int static cardesTaken() { return NUM_OF_CARDS; }
     };
-};
+}
 
 #endif

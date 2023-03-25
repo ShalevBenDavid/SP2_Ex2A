@@ -4,11 +4,12 @@
 
 class Card {
     // Private attributes.
-    int type;
+    int type = 1;
 public:
-    // Constructors.
-    Card() {
-    }
+    // Constructor.
+    Card() {}
+    // Destructor.
+    ~Card() {}
 };
 
 #endif
