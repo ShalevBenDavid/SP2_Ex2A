@@ -1,15 +1,14 @@
 // Created by Shalev Ben David.
+#include <string>
 #ifndef CARD_H
 #define CARD_H
 
 class Card {
     // Private attributes.
-    int type = 1;
+    int type;
 public:
     // Constructor.
-    Card() {}
-    // Destructor.
-    ~Card() {}
+    Card(int new_type = 1) : type(new_type) {}
 };
 
 #endif

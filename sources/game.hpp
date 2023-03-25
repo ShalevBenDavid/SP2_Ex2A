@@ -1,5 +1,6 @@
 // Created by Shalev Ben David.
 #include "player.hpp"
+#include <string>
 using namespace ariel;
 #ifndef GAME_H
 #define GAME_H
@@ -14,8 +15,6 @@ public:
         A.setName(player1.getName());
         B.setName(player2.getName());
     }
-    // Destructor.
-    ~Game() {}
     // Methods.
     void playTurn() {}
     void printLastTurn() {}
@@ -26,6 +25,8 @@ public:
     // Get method.
     Player getPlayerA() { return A; }
     Player getPlayerB() { return B; }
+    // ToString method.
+    std::string toString() { return A.toString() + "\n" + B.toString(); }
 };
 
 #endif
