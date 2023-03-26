@@ -9,6 +9,8 @@ class Card {
 public:
     // Constructor.
     Card(int new_type = 1) : type(new_type) {}
+    // Get method.
+    int& getType() { return type; }
 };
 
 #endif

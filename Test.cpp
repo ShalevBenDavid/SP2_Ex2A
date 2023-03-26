@@ -51,7 +51,7 @@ TEST_CASE("Case 2: During and after 5 games.") {
     // Save the last # of winning cards for each player.
     int num_of_cards_wonA = 0;
     int num_of_cards_wonB = 0;
-    // Play 5 rounds.
+    // Play 5 rounds (or until the game ends).
     for (int i = 1; i <= 5; i++) {
         game.playTurn();
         // ---- Testing: Checking each player has the right number of cards in this turn.
@@ -65,7 +65,7 @@ TEST_CASE("Case 2: During and after 5 games.") {
         // Either A won this round or B won this round or no one won.
         bool A_won = num_of_cards_wonA + current_round_profit == A.cardesTaken();
         bool B_won = num_of_cards_wonB + current_round_profit == B.cardesTaken();
-        bool no_one_one = (num_of_cards_wonA == A.cardesTaken()) && (num_of_cards_wonB == B.cardesTaken());
+        bool no_one_won = (num_of_cards_wonA == A.cardesTaken()) && (num_of_cards_wonB == B.cardesTaken());
         if (A_won || B_won) {
             // ---- Testing: Checking that the total cards won in this round equals this round profit.
             // ---- Expecting: True.
@@ -76,10 +76,12 @@ TEST_CASE("Case 2: During and after 5 games.") {
         num_of_cards_wonB = B.cardesTaken();
         // ---- Testing: Checking that either A or B won this round or no one won.
         // ---- Expecting: True.
-        CHECK((A_won || B_won || no_one_one));
+        CHECK((A_won || B_won || no_one_won));
         // ---- Testing: Checking that the sum of the cards in the game is 52.
         // ---- Expecting: True.
         CHECK(A.cardesTaken() + A.stacksize() + B.cardesTaken() + B.stacksize() == 52);
+        // If the game ended in this round, exit loop.
+        if (A.stacksize() == 0) { break; }
     }
 }
 
@@ -108,8 +110,23 @@ TEST_CASE("Case 3: Winning or draw.") {
     CHECK_NOTHROW(game.printLog());
 }
 
-TEST_CASE("Case 4: Constructor check.") {
+TEST_CASE("Case 4: Constructors check.") {
     // ---- Testing: Creating a player with no name.
     // ---- Expecting: Should work and give default empty name.
     CHECK_NOTHROW(Player A);
+    // Creating 2 players.
+    Player B("Alice");
+    Player C("Bob");
+    // ---- Testing: Creating 2 games with the same players.
+    // ---- Expecting: Should throw exception.
+    Game game(B, C);
+    CHECK_THROWS(Game(B, C));
+    // ---- Testing: Creating 2 players with the same name.
+    // ---- Expecting: Should work since 2 people can have the same name.
+    Player D("John");
+    CHECK_NOTHROW(Player("John"));
+    // ---- Testing: Creating a game with the same player.
+    // ---- Expecting: Should throw exception.
+    Player E("Shalev");
+    CHECK_THROWS(Game(E,E));
 }

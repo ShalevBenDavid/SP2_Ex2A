@@ -11,10 +11,7 @@ class Game {
     Player B;
 public:
     // Constructor.
-    Game(Player player1, Player player2) {
-        A.setName(player1.getName());
-        B.setName(player2.getName());
-    }
+    Game(const Player& player1, const Player& player2) : A(player1), B(player2) {}
     // Methods.
     void playTurn() {}
     void printLastTurn() {}
@@ -23,8 +20,8 @@ public:
     void printLog() {}
     void printStats() {}
     // Get method.
-    Player getPlayerA() { return A; }
-    Player getPlayerB() { return B; }
+    Player& getPlayerA() { return A; }
+    Player& getPlayerB() { return B; }
     // ToString method.
     std::string toString() { return A.toString() + "\n" + B.toString(); }
 };

@@ -14,7 +14,7 @@ namespace ariel {
         // Constructor.
         Player(const std::string &player_name = "") : name(player_name) {}
         // Get method.
-        std::string getName() { return name; }
+        const std::string& getName() { return name; }
         // Set method.
         void setName(const std::string &new_name) { name = new_name; }
         // Methods.
