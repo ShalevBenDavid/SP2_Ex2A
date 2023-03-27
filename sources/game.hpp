@@ -15,11 +15,11 @@ public:
     // Methods.
     void playTurn() {}
     void printLastTurn() {}
-    void playAll(){}
-    void printWiner(){}
+    void playAll() {}
+    void printWiner() {}
     void printLog() {}
     void printStats() {}
-    // Get method.
+    // Get methods.
     Player& getPlayerA() { return A; }
     Player& getPlayerB() { return B; }
     // ToString method.
